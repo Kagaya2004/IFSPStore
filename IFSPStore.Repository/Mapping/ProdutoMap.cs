@@ -13,7 +13,7 @@ namespace IFSPStore.Repository.Mapping
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Produto> builder)
         {
-            builder.ToTable("Produto");
+            builder.ToTable("Produtos");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Nome)
                 .IsRequired()

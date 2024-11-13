@@ -12,7 +12,7 @@ namespace IFSPStore.Repository.Mapping
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Usuario> builder)
         {
-            builder.ToTable("Usuário");
+            builder.ToTable("Usuarios");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Nome)
                 .IsRequired()
@@ -27,14 +27,11 @@ namespace IFSPStore.Repository.Mapping
                 .IsRequired()
                 .HasColumnType("varchar(100)");
             builder.Property(x => x.DataCadastro)
-                .IsRequired()
-                .HasColumnType("DateTime");
+                .IsRequired();
             builder.Property(x => x.DataLogin)
-                .IsRequired()
-                .HasColumnType("DateTime");
+                .IsRequired();
             builder.Property(x => x.Ativo)
-                .IsRequired()
-                .HasColumnType("bool");
+                .IsRequired();
         }
     }
 }

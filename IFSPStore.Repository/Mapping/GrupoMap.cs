@@ -12,13 +12,13 @@ namespace IFSPStore.Repository.Mapping
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Grupo> builder)
         {
-            builder.ToTable("Abobrinha"); // Define nome da tabela
+            builder.ToTable("Grupos"); // Define nome da tabela
             builder.HasKey(prop => prop.Id); // Define chave primária
             builder.Property(prop => prop.Nome)
-                .HasColumnName("Melancia")
+                .HasColumnName("Nome")
                 .IsRequired()
                 .HasMaxLength(50);
-                //.HasColumnType("varchar(50)");
+            //.HasColumnType("varchar(50)");
         }
     }
 }

@@ -21,7 +21,7 @@ namespace IFSPStore.Service.Validators
             RuleFor(c => c.Documento)
                 .NotEmpty().WithMessage("Por favor informe o documento.")
                 .NotNull().WithMessage("Por favor informe o documento.")
-                .Length(11).WithMessage("O documento precisa ter 11 dígitos.");
+                .MinimumLength(11).WithMessage("O documento precisa ter, no mínimo, 11 dígitos.");
             RuleFor(c => c.Bairro)
                 .NotEmpty().WithMessage("Por favor informe o bairro.")
                 .NotNull().WithMessage("Por favor informe o bairro.");

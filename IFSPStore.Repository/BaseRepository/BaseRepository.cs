@@ -12,7 +12,13 @@ namespace IFSPStore.Repository.BaseRepository
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity<int>
     {
         protected readonly MySqlContext _mySqlcontext;
-        public void AtachObject(object obj)
+
+        public BaseRepository(MySqlContext mySqlContext)
+        {
+            _mySqlcontext = mySqlContext;
+        }
+
+        public void AttachObject(object obj)
         {
             _mySqlcontext.Attach(obj); // Objeto que tenho interesse de gravar no banco de dados
         }
@@ -30,6 +36,7 @@ namespace IFSPStore.Repository.BaseRepository
 
         public void Insert(TEntity entity)
         {
+            _mySqlcontext.Entry(entity).State = EntityState.Added;
             _mySqlcontext.Set<TEntity>().Add(entity);
             _mySqlcontext.SaveChanges();
         }
@@ -57,7 +64,7 @@ namespace IFSPStore.Repository.BaseRepository
                     dbContext = dbContext.Include(include);
                 }
             }
-            return dbContext.ToList().Find(x => x.Id == (int)id);
+            return dbContext.ToList().Find(x => x.Id == (int)id)!;
         }
 
         public void Update(TEntity entity)

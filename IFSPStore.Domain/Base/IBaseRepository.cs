@@ -3,7 +3,7 @@
     public interface IBaseRepository<TEntity> where TEntity : IBaseEntity
     {
         void ClearChangeTracker();
-        void AtachObject(object obj);
+        void AttachObject(object obj);
         void Insert(TEntity entity);
         void Update(TEntity entity);
         void Delete(object id);

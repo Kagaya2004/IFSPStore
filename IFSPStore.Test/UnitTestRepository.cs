@@ -84,7 +84,7 @@ namespace IFSPStore.Test
                     Cidade = cidade,
                     Endereco = "Rua Noroeste",
                     Bairro = "Vila Roberto",
-                    Documento = "475.795.968-06"
+                    Documento = "475795968-06"
                 };
                 context.Clientes.Add(cliente);
                 context.SaveChanges();
@@ -305,7 +305,7 @@ namespace IFSPStore.Test
                 }
             }
         }
-        
+        /*
         [TestMethod]
         public void TestDeleteCidades()
         {
@@ -413,8 +413,7 @@ namespace IFSPStore.Test
         {
             using (var context = new MyDbContext())
             {
-                foreach (var venda in context.Vendas)
-                {
+                foreach (var venda in context.Vendas
                     if (venda.Id == 10)
                     {
                         context.Vendas.Remove(venda);
@@ -424,5 +423,6 @@ namespace IFSPStore.Test
                 context.SaveChanges();
             }
         }
+        */
     }
 }

@@ -12,7 +12,7 @@ namespace IFSPStore.Repository.Mapping
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Cliente> builder)
         {
-            builder.ToTable("Cliente");
+            builder.ToTable("Clientes");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Nome)
                 .IsRequired()
@@ -25,7 +25,7 @@ namespace IFSPStore.Repository.Mapping
                 .HasColumnType("varchar(100)");
             builder.Property(x => x.Documento)
                 .IsRequired()
-                .HasColumnType("varchar(11)");
+                .HasColumnType("varchar(12)");
             builder.HasOne(x => x.Cidade)
                 .WithMany()
                 .HasConstraintName("FK_Cidade");

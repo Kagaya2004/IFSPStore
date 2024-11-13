@@ -14,7 +14,7 @@ namespace IFSPStore.Repository.Mapping
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Venda> builder)
         {
-            builder.ToTable("Venda");
+            builder.ToTable("Vendas");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Data)
                 .IsRequired();
@@ -31,7 +31,7 @@ namespace IFSPStore.Repository.Mapping
     {
         public void Configure(EntityTypeBuilder<VendaItem> builder)
         {
-            builder.ToTable("VendaItem");
+            builder.ToTable("VendaItens");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Quantidade)
                 .IsRequired();

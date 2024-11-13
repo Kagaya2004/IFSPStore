@@ -22,7 +22,7 @@ namespace IFSPStore.Service.Validators
                 .Matches(@"[A-Z]+").WithMessage("A senha precisa possuir, pelo menos, um caractere maíusculo.")
                 .Matches(@"[a-z]+").WithMessage("A senha precisa possuir, pelo menos, um caractere minúsculo")
                 .Matches(@"[0-9]+").WithMessage("A senha precisa possuir, pelo menos, um caractere numérico")
-                .Matches(@"[\!\?\*\.]+").WithMessage("a senha precisa possuir, pelo menos, um caractere desses caracteres: ! ? * .");
+                .Matches(@"[\!\?\*\.\@]+").WithMessage("a senha precisa possuir, pelo menos, um caractere desses caracteres: ! ? * .");
             RuleFor(c => c.Email)
                 .NotEmpty().WithMessage("E-mail obrigatório.")
                 .NotNull().WithMessage("E-mail obrigatório.")
@@ -32,8 +32,7 @@ namespace IFSPStore.Service.Validators
                 .NotNull().WithMessage("Login obrigatório.");
             RuleFor(c => c.DataCadastro)
                 .NotEmpty().WithMessage("Data de Cadastro Obrigatória")
-                .NotNull().WithMessage("Data de Cadastro Obrigatória")
-                .LessThan(DateTime.Now).WithMessage("A data de cadastro deve ser anterior à data atual.");
+                .NotNull().WithMessage("Data de Cadastro Obrigatória");
             RuleFor(c => c.DataLogin)
                 .NotEmpty().WithMessage("Data de Login Obrigatória")
                 .NotNull().WithMessage("Data de Login Obrigatória");

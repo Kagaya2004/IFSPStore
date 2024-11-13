@@ -8,11 +8,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IFSPStore.Test", "IFSPStore.Test\IFSPStore.Test.csproj", "{A006C73F-5D0A-42C8-BE2D-58041926C825}"
 	ProjectSection(ProjectDependencies) = postProject
 		{37316CD3-E942-4606-A324-3AE87F4C34BF} = {37316CD3-E942-4606-A324-3AE87F4C34BF}
+		{85BFCFDB-7134-47BA-9692-0603118B1322} = {85BFCFDB-7134-47BA-9692-0603118B1322}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IFSPStore.Repository", "IFSPStore.Repository\IFSPStore.Repository.csproj", "{DA192CD6-1CAE-4622-A364-C9700464F3F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IFSPStore.Repository", "IFSPStore.Repository\IFSPStore.Repository.csproj", "{DA192CD6-1CAE-4622-A364-C9700464F3F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IFSPStore.Service", "IFSPStore.Services\IFSPStore.Service.csproj", "{85BFCFDB-7134-47BA-9692-0603118B1322}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IFSPStore.Service", "IFSPStore.Services\IFSPStore.Service.csproj", "{85BFCFDB-7134-47BA-9692-0603118B1322}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

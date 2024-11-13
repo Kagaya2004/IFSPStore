@@ -15,9 +15,7 @@ namespace IFSPStore.Service.Validators
             RuleFor(c => c.Nome)
                 .NotEmpty().WithMessage("Por favor informe a cidade.")
                 .NotNull().WithMessage("Por favor informe a cidade.")
-                .Length(50)
-                .WithMessage("Nome pode ter no máximo 50 caracteres.");
-
+                .MaximumLength(50).WithMessage("Nome pode ter no máximo 50 caracteres.");
             RuleFor(c => c.Estado)
                 .NotEmpty().WithMessage("Por favor informe o estado.")
                 .NotNull().WithMessage("Por favor informe o estado.");
