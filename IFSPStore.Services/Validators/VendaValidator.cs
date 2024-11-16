@@ -18,7 +18,7 @@ namespace IFSPStore.Service.Validators
             RuleFor(c => c.ValorTotal)
                 .NotEmpty().WithMessage("Por favor informe o valor total da venda.")
                 .NotNull().WithMessage("Por favor informe o valor total da venda.")
-                .LessThan(0).WithMessage("O valor total deve ser acima de zero (0).");
+                .GreaterThan(0).WithMessage("O valor total deve ser acima de zero (0).");
             RuleFor(c => c.Usuario)
                 .NotEmpty().WithMessage("Por favor informe a quantidade.")
                 .NotNull().WithMessage("Por favor informe a quantidade.");

@@ -21,7 +21,7 @@ namespace IFSPStore.Service.Validators
             RuleFor(c => c.Quantidade)
                 .NotEmpty().WithMessage("Por favor informe a quantidade.")
                 .NotNull().WithMessage("Por favor informe a quantidade.")
-                .LessThan(0).WithMessage("A quantidade deve ser acima de zero (0).");
+                .GreaterThan(0).WithMessage("A quantidade deve ser acima de zero (0).");
             RuleFor(c => c.UnidadeVenda)
                 .NotEmpty().WithMessage("Por favor informe a unidade de medida do produto.")
                 .NotNull().WithMessage("Por favor informe a unidade de medida do produto.");
