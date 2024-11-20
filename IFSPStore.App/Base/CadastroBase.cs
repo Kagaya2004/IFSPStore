@@ -124,7 +124,7 @@ namespace IFSPStore.App.Base
             }
         }
 
-        protected void Excluir(int id)
+        protected virtual void Excluir(int id)
         {
 
         }

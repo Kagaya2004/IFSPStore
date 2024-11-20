@@ -14,26 +14,25 @@ using System.Windows.Forms;
 
 namespace IFSPStore.App.Cadastros
 {
-    public partial class CadastroCidade : CadastroBase
+    public partial class CadastroGrupo : CadastroBase
     {
-        #region Declaração
-        private readonly IBaseService<Cidade> _cidadeService;
-        private List<Cidade>? cidades;
+        #region Declarações
+        private readonly IBaseService<Grupo> _grupoService;
+        private List<Grupo> grupos;
         #endregion
 
         #region Construtor
-        public CadastroCidade(IBaseService<Cidade> cidadeService)
+        public CadastroGrupo(IBaseService<Grupo> grupoService)
         {
-            _cidadeService = cidadeService;
+            _grupoService = grupoService;
             InitializeComponent();
         }
         #endregion
 
         #region Métodos
-        private void PreencheObjeto(Cidade cidade)
+        private void PreencheObjeto(Grupo grupo)
         {
-            cidade.Nome = tbNome.Text;
-            cidade.Estado = cbEstado.Text;
+            grupo.Nome = tbNome.Text;
         }
         #endregion
 
@@ -46,16 +45,16 @@ namespace IFSPStore.App.Cadastros
                 {
                     if (int.TryParse(tbId.Text, out var id))
                     {
-                        var cidade = _cidadeService.GetById<Cidade>(id);
-                        PreencheObjeto(cidade);
-                        cidade = _cidadeService.Update<Cidade, Cidade, CidadeValidator>(cidade);
+                        var grupo = _grupoService.GetById<Grupo>(id);
+                        PreencheObjeto(grupo);
+                        grupo = _grupoService.Update<Grupo, Grupo, GrupoValidator>(grupo);
                     }
                 }
                 else
                 {
-                    var cidade = new Cidade();
-                    PreencheObjeto(cidade);
-                    _cidadeService.Add<Cidade, Cidade, CidadeValidator>(cidade);
+                    var grupo = new Grupo();
+                    PreencheObjeto(grupo);
+                    grupo = _grupoService.Add<Grupo, Grupo, GrupoValidator>(grupo);
                 }
             }
             catch(Exception ex)
@@ -68,7 +67,7 @@ namespace IFSPStore.App.Cadastros
         {
             try
             {
-                _cidadeService.Delete(id);
+                _grupoService.Delete(id);
             }
             catch(Exception ex)
             {
@@ -78,16 +77,16 @@ namespace IFSPStore.App.Cadastros
 
         protected override void CarregaGrid()
         {
-            cidades = _cidadeService.Get<Cidade>().ToList();
-            dgvConsulta.DataSource = cidades;
+            grupos = _grupoService.Get<Grupo>().ToList();
+            dgvConsulta.DataSource = grupos;
             dgvConsulta.Columns["Nome"]!.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
         }
 
         protected override void CarregaRegistro(DataGridViewRow? linha)
         {
             tbId.Text = linha?.Cells["Id"].Value.ToString();
             tbNome.Text = linha?.Cells["Nome"].Value.ToString();
-            cbEstado.Text = linha?.Cells["Estado"].Value.ToString();
         }
         #endregion
     }

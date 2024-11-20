@@ -14,26 +14,29 @@ using System.Windows.Forms;
 
 namespace IFSPStore.App.Cadastros
 {
-    public partial class CadastroCidade : CadastroBase
+    public partial class CadastroProduto : CadastroBase
     {
-        #region Declaração
-        private readonly IBaseService<Cidade> _cidadeService;
-        private List<Cidade>? cidades;
+        #region Declarações
+        private readonly IBaseService<Produto> _produtoService;
+        private List<Produto>? produtos;
         #endregion
 
         #region Construtor
-        public CadastroCidade(IBaseService<Cidade> cidadeService)
+        public CadastroProduto(IBaseService<Produto> produtoService)
         {
-            _cidadeService = cidadeService;
+            _produtoService = produtoService;
             InitializeComponent();
         }
         #endregion
 
-        #region Métodos
-        private void PreencheObjeto(Cidade cidade)
+        #region Método
+        private void PreencheObjeto(Produto produto)
         {
-            cidade.Nome = tbNome.Text;
-            cidade.Estado = cbEstado.Text;
+            produto.Nome = tbNome.Text;
+            produto.Preco = float.Parse(tbPreco.Text);
+            produto.UnidadeVenda = tbUnidadeVenda.Text;
+            produto.DataCompra = DateTime.Parse(tbDataCompra.Text);
+            //produto.Grupo.Nome = cbGrupo.Text;
         }
         #endregion
 
@@ -46,16 +49,16 @@ namespace IFSPStore.App.Cadastros
                 {
                     if (int.TryParse(tbId.Text, out var id))
                     {
-                        var cidade = _cidadeService.GetById<Cidade>(id);
-                        PreencheObjeto(cidade);
-                        cidade = _cidadeService.Update<Cidade, Cidade, CidadeValidator>(cidade);
+                        var produto = _produtoService.GetById<Produto>(id);
+                        PreencheObjeto(produto);
+                        produto = _produtoService.Update<Produto, Produto, ProdutoValidator>(produto);
                     }
                 }
                 else
                 {
-                    var cidade = new Cidade();
-                    PreencheObjeto(cidade);
-                    _cidadeService.Add<Cidade, Cidade, CidadeValidator>(cidade);
+                    var produto = new Produto();
+                    PreencheObjeto(produto);
+                    _produtoService.Add<Produto, Produto, ProdutoValidator>(produto);
                 }
             }
             catch(Exception ex)
@@ -68,7 +71,7 @@ namespace IFSPStore.App.Cadastros
         {
             try
             {
-                _cidadeService.Delete(id);
+                _produtoService.Delete(id);
             }
             catch(Exception ex)
             {
@@ -78,16 +81,19 @@ namespace IFSPStore.App.Cadastros
 
         protected override void CarregaGrid()
         {
-            cidades = _cidadeService.Get<Cidade>().ToList();
-            dgvConsulta.DataSource = cidades;
-            dgvConsulta.Columns["Nome"]!.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            produtos = _produtoService.Get<Produto>().ToList();
+            dgvConsulta.DataSource = produtos;
+            dgvConsulta.Columns["Nome"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
         protected override void CarregaRegistro(DataGridViewRow? linha)
         {
             tbId.Text = linha?.Cells["Id"].Value.ToString();
             tbNome.Text = linha?.Cells["Nome"].Value.ToString();
-            cbEstado.Text = linha?.Cells["Estado"].Value.ToString();
+            tbPreco.Text = linha?.Cells["Preço"].Value.ToString();
+            tbUnidadeVenda.Text = linha?.Cells["Unidade Venda"].Value.ToString();
+            tbDataCompra.Text = linha?.Cells["Data Compra"].Value.ToString();
+            cbGrupo.Text = linha?.Cells["Grupo"].Value.ToString();
         }
         #endregion
     }

@@ -63,58 +63,58 @@
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(177, 6);
+            toolStripSeparator1.Size = new Size(166, 6);
             // 
             // usuáriosToolStripMenuItem
             // 
             usuáriosToolStripMenuItem.Name = "usuáriosToolStripMenuItem";
-            usuáriosToolStripMenuItem.Size = new Size(180, 22);
+            usuáriosToolStripMenuItem.Size = new Size(169, 22);
             usuáriosToolStripMenuItem.Text = "Usuário";
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(177, 6);
+            toolStripSeparator2.Size = new Size(166, 6);
             // 
             // grupoDeProdutosToolStripMenuItem
             // 
             grupoDeProdutosToolStripMenuItem.Name = "grupoDeProdutosToolStripMenuItem";
-            grupoDeProdutosToolStripMenuItem.Size = new Size(180, 22);
+            grupoDeProdutosToolStripMenuItem.Size = new Size(169, 22);
             grupoDeProdutosToolStripMenuItem.Text = "Grupo de Produto";
             // 
             // produtoToolStripMenuItem
             // 
             produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
-            produtoToolStripMenuItem.Size = new Size(180, 22);
+            produtoToolStripMenuItem.Size = new Size(169, 22);
             produtoToolStripMenuItem.Text = "Produto";
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(177, 6);
+            toolStripSeparator3.Size = new Size(166, 6);
             // 
             // cidadeToolStripMenuItem
             // 
             cidadeToolStripMenuItem.Name = "cidadeToolStripMenuItem";
-            cidadeToolStripMenuItem.Size = new Size(180, 22);
+            cidadeToolStripMenuItem.Size = new Size(169, 22);
             cidadeToolStripMenuItem.Text = "Cidade";
             cidadeToolStripMenuItem.Click += cidadeToolStripMenuItem_Click;
             // 
             // clienteToolStripMenuItem
             // 
             clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            clienteToolStripMenuItem.Size = new Size(180, 22);
+            clienteToolStripMenuItem.Size = new Size(169, 22);
             clienteToolStripMenuItem.Text = "Cliente";
             // 
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(177, 6);
+            toolStripSeparator4.Size = new Size(166, 6);
             // 
             // vendaToolStripMenuItem
             // 
             vendaToolStripMenuItem.Name = "vendaToolStripMenuItem";
-            vendaToolStripMenuItem.Size = new Size(180, 22);
+            vendaToolStripMenuItem.Size = new Size(169, 22);
             vendaToolStripMenuItem.Text = "Venda";
             // 
             // FormPrincipal
@@ -132,6 +132,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sistema IFSP Store";
             WindowState = FormWindowState.Maximized;
+            FormClosing += FecharForm;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);

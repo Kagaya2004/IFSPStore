@@ -239,10 +239,10 @@
         private ReaLTaiizor.Controls.MaterialButton btnNovo;
         private ReaLTaiizor.Controls.MaterialButton btnEditar;
         private ReaLTaiizor.Controls.MaterialButton btnExcluir;
-        private DataGridView dgvConsulta;
         private ImageList iconList;
         protected ReaLTaiizor.Controls.MaterialTabControl tabControl;
         protected TabPage tabPageCadastro;
         protected TabPage tabPageConsulta;
+        protected DataGridView dgvConsulta;
     }
 }

@@ -14,26 +14,28 @@ using System.Windows.Forms;
 
 namespace IFSPStore.App.Cadastros
 {
-    public partial class CadastroCidade : CadastroBase
+    public partial class CadastroCliente : CadastroBase
     {
-        #region Declaração
-        private readonly IBaseService<Cidade> _cidadeService;
-        private List<Cidade>? cidades;
+        #region Declarações
+        private readonly IBaseService<Cliente> _clienteService;
+        private List<Cliente>? clientes;
         #endregion
 
         #region Construtor
-        public CadastroCidade(IBaseService<Cidade> cidadeService)
+        public CadastroCliente(IBaseService<Cliente> clienteService)
         {
-            _cidadeService = cidadeService;
+            _clienteService = clienteService;
             InitializeComponent();
         }
         #endregion
 
         #region Métodos
-        private void PreencheObjeto(Cidade cidade)
+        private void PreencheObjeto(Cliente cliente)
         {
-            cidade.Nome = tbNome.Text;
-            cidade.Estado = cbEstado.Text;
+            cliente.Nome = tbNome.Text;
+            cliente.Endereco = tbEndereco.Text;
+            cliente.Bairro = tbBairro.Text;
+            //cliente.Cidade.Nome = cbCidade.Text;
         }
         #endregion
 
@@ -46,16 +48,16 @@ namespace IFSPStore.App.Cadastros
                 {
                     if (int.TryParse(tbId.Text, out var id))
                     {
-                        var cidade = _cidadeService.GetById<Cidade>(id);
-                        PreencheObjeto(cidade);
-                        cidade = _cidadeService.Update<Cidade, Cidade, CidadeValidator>(cidade);
+                        var cliente = _clienteService.GetById<Cliente>(id);
+                        PreencheObjeto(cliente);
+                        cliente = _clienteService.Update<Cliente, Cliente, ClienteValidator>(cliente);
                     }
                 }
                 else
                 {
-                    var cidade = new Cidade();
-                    PreencheObjeto(cidade);
-                    _cidadeService.Add<Cidade, Cidade, CidadeValidator>(cidade);
+                    var cliente = new Cliente();
+                    PreencheObjeto(cliente);
+                    _clienteService.Add<Cliente, Cliente, ClienteValidator>(cliente);
                 }
             }
             catch(Exception ex)
@@ -68,7 +70,7 @@ namespace IFSPStore.App.Cadastros
         {
             try
             {
-                _cidadeService.Delete(id);
+                _clienteService.Delete(id);
             }
             catch(Exception ex)
             {
@@ -78,8 +80,8 @@ namespace IFSPStore.App.Cadastros
 
         protected override void CarregaGrid()
         {
-            cidades = _cidadeService.Get<Cidade>().ToList();
-            dgvConsulta.DataSource = cidades;
+            clientes = _clienteService.Get<Cliente>().ToList();
+            dgvConsulta.DataSource = clientes;
             dgvConsulta.Columns["Nome"]!.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
@@ -87,7 +89,9 @@ namespace IFSPStore.App.Cadastros
         {
             tbId.Text = linha?.Cells["Id"].Value.ToString();
             tbNome.Text = linha?.Cells["Nome"].Value.ToString();
-            cbEstado.Text = linha?.Cells["Estado"].Value.ToString();
+            tbEndereco.Text = linha?.Cells["Endereço"].Value.ToString();
+            tbBairro.Text = linha?.Cells["Bairro"].Value.ToString();
+            cbCidade.Text = linha?.Cells["Cidade"].Value.ToString();
         }
         #endregion
     }

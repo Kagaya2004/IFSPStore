@@ -68,8 +68,8 @@
             tbId.SelectionLength = 0;
             tbId.SelectionStart = 0;
             tbId.ShortcutsEnabled = true;
-            tbId.Size = new Size(189, 48);
-            tbId.TabIndex = 4;
+            tbId.Size = new Size(109, 48);
+            tbId.TabIndex = 0;
             tbId.TabStop = false;
             tbId.TextAlign = HorizontalAlignment.Left;
             tbId.TrailingIcon = null;
@@ -87,7 +87,7 @@
             tbNome.HideSelection = true;
             tbNome.Hint = "Nome";
             tbNome.LeadingIcon = null;
-            tbNome.Location = new Point(244, 24);
+            tbNome.Location = new Point(147, 24);
             tbNome.MaxLength = 32767;
             tbNome.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             tbNome.Name = "tbNome";
@@ -99,8 +99,8 @@
             tbNome.SelectionLength = 0;
             tbNome.SelectionStart = 0;
             tbNome.ShortcutsEnabled = true;
-            tbNome.Size = new Size(189, 48);
-            tbNome.TabIndex = 5;
+            tbNome.Size = new Size(474, 48);
+            tbNome.TabIndex = 1;
             tbNome.TabStop = false;
             tbNome.TextAlign = HorizontalAlignment.Left;
             tbNome.TrailingIcon = null;
@@ -115,25 +115,26 @@
             cbEstado.DropDownHeight = 174;
             cbEstado.DropDownStyle = ComboBoxStyle.DropDownList;
             cbEstado.DropDownWidth = 121;
-            cbEstado.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            cbEstado.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             cbEstado.ForeColor = Color.FromArgb(222, 0, 0, 0);
             cbEstado.FormattingEnabled = true;
             cbEstado.Hint = "Estado";
             cbEstado.IntegralHeight = false;
             cbEstado.ItemHeight = 43;
-            cbEstado.Location = new Point(494, 24);
+            cbEstado.Items.AddRange(new object[] { "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO" });
+            cbEstado.Location = new Point(646, 24);
             cbEstado.MaxDropDownItems = 4;
             cbEstado.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             cbEstado.Name = "cbEstado";
-            cbEstado.Size = new Size(276, 49);
+            cbEstado.Size = new Size(124, 49);
             cbEstado.StartIndex = 0;
-            cbEstado.TabIndex = 6;
+            cbEstado.TabIndex = 2;
             // 
             // CadastroCidade
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 513);
             Location = new Point(0, 0);
             Name = "CadastroCidade";
             Text = "Cadastro de Cidades";
