@@ -131,6 +131,7 @@
             tabPageConsulta.TabIndex = 1;
             tabPageConsulta.Text = "Consulta";
             tabPageConsulta.UseVisualStyleBackColor = true;
+            tabPageConsulta.Enter += tabPageConsulta_Enter;
             // 
             // btnNovo
             // 
@@ -203,8 +204,10 @@
             dgvConsulta.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvConsulta.Location = new Point(0, 0);
             dgvConsulta.Name = "dgvConsulta";
+            dgvConsulta.ReadOnly = true;
             dgvConsulta.Size = new Size(789, 275);
             dgvConsulta.TabIndex = 0;
+            dgvConsulta.CellDoubleClick += dgvConsulta_CellDoubleClick;
             // 
             // iconList
             // 

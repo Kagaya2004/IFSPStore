@@ -71,6 +71,16 @@ namespace IFSPStore.App.Base
             }
         }
 
+        private void tabPageConsulta_Enter(object sender, EventArgs e)
+        {
+            CarregaGrid();
+        }
+
+        private void dgvConsulta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Editar();
+        }
+
         #endregion
 
         #region Eventos CRUD
@@ -129,7 +139,7 @@ namespace IFSPStore.App.Base
 
         }
 
-        protected virtual void CarregaRegistro(DataGridViewRow ? linha)
+        protected virtual void CarregaRegistro(DataGridViewRow? linha)
         {
 
         }

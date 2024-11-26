@@ -186,7 +186,7 @@
             cbCidade.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             cbCidade.ForeColor = Color.FromArgb(222, 0, 0, 0);
             cbCidade.FormattingEnabled = true;
-            cbCidade.Hint = "Cidade";
+            cbCidade.Hint = "Cidade/Estado";
             cbCidade.IntegralHeight = false;
             cbCidade.ItemHeight = 43;
             cbCidade.Location = new Point(47, 232);

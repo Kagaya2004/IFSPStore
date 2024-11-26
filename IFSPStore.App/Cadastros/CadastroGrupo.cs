@@ -54,7 +54,7 @@ namespace IFSPStore.App.Cadastros
                 {
                     var grupo = new Grupo();
                     PreencheObjeto(grupo);
-                    grupo = _grupoService.Add<Grupo, Grupo, GrupoValidator>(grupo);
+                    _grupoService.Add<Grupo, Grupo, GrupoValidator>(grupo);
                 }
                 tabControl.SelectedIndex = 1;
             }

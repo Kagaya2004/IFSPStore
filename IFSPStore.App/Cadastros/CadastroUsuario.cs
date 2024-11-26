@@ -86,6 +86,7 @@ namespace IFSPStore.App.Cadastros
         {
             usuarios = _usuarioService.Get<Usuario>().ToList();
             dgvConsulta.DataSource = usuarios;
+            dgvConsulta.Columns["Senha"]!.Visible = false;
             dgvConsulta.Columns["Nome"]!.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
@@ -96,18 +97,12 @@ namespace IFSPStore.App.Cadastros
             tbLogin.Text = linha?.Cells["Login"].Value.ToString();
             tbEmail.Text = linha?.Cells["Email"].Value.ToString();
             tbSenha.Text = linha?.Cells["Senha"].Value.ToString();
-            tbDataCadastro.Text = linha?.Cells["Data Cadastro"].Value.ToString();
-            tbDataLogin.Text = linha?.Cells["DataLogin"].Value.ToString();
-            var sAtivo = linha?.Cells["Ativo"].Value.ToString();
-            if (sAtivo is "true")
-            {
-                chAtivo.Checked = true;
-            }
-            else
-            {
-                chAtivo.Checked = false;
-            }
-        }
+            chAtivo.Checked = (bool)(linha?.Cells["Ativo"].Value ?? false);
+
+            tbDataCadastro.Text = DateTime.TryParse(linha?.Cells["DataCasdastro"].Value.ToString(), out var dataC)
+                ? dataC.ToString("g") : "";
+            tbDataLogin.Text = DateTime.TryParse(linha?.Cells["DataLogin"].Value.ToString(), out var dataL)
+                ? dataL.ToString("g") : "";
 
         #endregion
     }

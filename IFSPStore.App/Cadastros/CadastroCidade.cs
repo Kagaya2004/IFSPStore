@@ -57,9 +57,10 @@ namespace IFSPStore.App.Cadastros
                     PreencheObjeto(cidade);
                     _cidadeService.Add<Cidade, Cidade, CidadeValidator>(cidade);
                 }
+                CarregaGrid();
                 tabControl.SelectedIndex = 1;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, @"IFSP Store", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -72,7 +73,7 @@ namespace IFSPStore.App.Cadastros
             {
                 _cidadeService.Delete(id);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, @"IFSP Store", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -91,6 +92,7 @@ namespace IFSPStore.App.Cadastros
             tbNome.Text = linha?.Cells["Nome"].Value.ToString();
             cbEstado.Text = linha?.Cells["Estado"].Value.ToString();
         }
+
         #endregion
     }
 }

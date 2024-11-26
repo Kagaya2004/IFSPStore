@@ -1,4 +1,5 @@
 ﻿using IFSPStore.App.Base;
+using IFSPStore.App.Models;
 using IFSPStore.Domain.Base;
 using IFSPStore.Domain.Entities;
 using IFSPStore.Service.Validators;
@@ -18,14 +19,17 @@ namespace IFSPStore.App.Cadastros
     {
         #region Declarações
         private readonly IBaseService<Cliente> _clienteService;
+        private readonly IBaseService<Cidade> _cidadeService;
         private List<Cliente>? clientes;
         #endregion
 
         #region Construtor
-        public CadastroCliente(IBaseService<Cliente> clienteService)
+        public CadastroCliente(IBaseService<Cliente> clienteService, IBaseService<Cidade> cidadeService)
         {
             _clienteService = clienteService;
+            _cidadeService = cidadeService;
             InitializeComponent();
+            CarregarCombo();
         }
         #endregion
 
@@ -35,7 +39,19 @@ namespace IFSPStore.App.Cadastros
             cliente.Nome = tbNome.Text;
             cliente.Endereco = tbEndereco.Text;
             cliente.Bairro = tbBairro.Text;
-            //cliente.Cidade.Nome = cbCidade.Text;
+
+            if (int.TryParse(cbCidade.SelectedValue.ToString(), out var idGrupo))
+            {
+                var cidade = _cidadeService.GetById<Cidade>(idGrupo);
+                cliente.Cidade = cidade;
+            }
+        }
+
+        private void CarregarCombo()
+        {
+            cbCidade.ValueMember = "Id";
+            cbCidade.DisplayMember = "NomeEstado";
+            cbCidade.DataSource = _cidadeService.Get<CidadeModel>().ToList();
         }
         #endregion
 
@@ -61,7 +77,7 @@ namespace IFSPStore.App.Cadastros
                 }
                 tabControl.SelectedIndex = 1;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, @"IFSP Store", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -73,7 +89,7 @@ namespace IFSPStore.App.Cadastros
             {
                 _clienteService.Delete(id);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, @"IFSP Store", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -94,6 +110,7 @@ namespace IFSPStore.App.Cadastros
             tbBairro.Text = linha?.Cells["Bairro"].Value.ToString();
             cbCidade.Text = linha?.Cells["Cidade"].Value.ToString();
         }
+
         #endregion
     }
 }

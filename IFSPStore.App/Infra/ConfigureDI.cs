@@ -1,4 +1,6 @@
-﻿using IFSPStore.App.Cadastros;
+﻿using AutoMapper;
+using IFSPStore.App.Cadastros;
+using IFSPStore.App.Models;
 using IFSPStore.Domain.Base;
 using IFSPStore.Domain.Entities;
 using IFSPStore.Repository.BaseRepository;
@@ -58,6 +60,26 @@ namespace IFSPStore.App.Infra
             #region Formulários
             Services.AddTransient<CadastroCidade, CadastroCidade>();
 
+            #endregion
+
+            #region Mapping
+            Services.AddSingleton(new MapperConfiguration(config =>
+            {
+                config.CreateMap<Cidade, Cidade>();
+                config.CreateMap<Grupo, Grupo>();
+                config.CreateMap<Produto, Produto>();
+                config.CreateMap<Usuario, Usuario>();
+                config.CreateMap<Cidade, CidadeModel>()
+
+                .ForMember(c => c.NomeEstado, c => c.MapFrom(x => $"{x.Nome}/{x.Estado}"));
+
+                config.CreateMap<Cliente, ClienteModel>()
+                .ForMember(c => c.Cidade, c => c.MapFrom(x => $"{x.Cidade!.Nome}/{x.Cidade!.Estado}"))
+                .ForMember(c => c.IdCidade, c => c.MapFrom(x => x.Cidade!.Id));
+
+                
+
+            }).CreateMapper());
             #endregion
 
             ServicesProvider = Services.BuildServiceProvider();

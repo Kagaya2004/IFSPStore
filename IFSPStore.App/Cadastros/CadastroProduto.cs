@@ -18,14 +18,17 @@ namespace IFSPStore.App.Cadastros
     {
         #region Declarações
         private readonly IBaseService<Produto> _produtoService;
+        private readonly IBaseService<Grupo> _grupoService;
         private List<Produto>? produtos;
         #endregion
 
         #region Construtor
-        public CadastroProduto(IBaseService<Produto> produtoService)
+        public CadastroProduto(IBaseService<Produto> produtoService, IBaseService<Grupo> grupoService)
         {
             _produtoService = produtoService;
+            _grupoService = grupoService;
             InitializeComponent();
+            CarregarCombo();
         }
         #endregion
 
@@ -33,10 +36,28 @@ namespace IFSPStore.App.Cadastros
         private void PreencheObjeto(Produto produto)
         {
             produto.Nome = tbNome.Text;
-            produto.Preco = float.Parse(tbPreco.Text);
+            if (float.TryParse(tbPreco.Text, out float preco))
+            {
+                produto.Preco = preco;
+            }
+            if (DateTime.TryParse(tbDataCompra.Text, out var dataCompra))
+            {
+                produto.DataCompra = dataCompra;
+            }
             produto.UnidadeVenda = tbUnidadeVenda.Text;
-            produto.DataCompra = DateTime.Parse(tbDataCompra.Text);
-            //produto.Grupo.Nome = cbGrupo.Text;
+            if (int.TryParse(cbGrupo.SelectedValue.ToString(), out int idGrupo))
+            {
+                var grupo = _grupoService.GetById<Grupo>(idGrupo);
+                produto.Grupo = grupo;
+                //_produtoService.AttachObject(grupo);
+            }
+        }
+
+        private void CarregarCombo()
+        {
+            cbGrupo.ValueMember = "Id";
+            cbGrupo.DisplayMember = "Nome";
+            cbGrupo.DataSource = _grupoService.Get<Grupo>().ToList();
         }
         #endregion
 
@@ -93,8 +114,9 @@ namespace IFSPStore.App.Cadastros
             tbNome.Text = linha?.Cells["Nome"].Value.ToString();
             tbPreco.Text = linha?.Cells["Preço"].Value.ToString();
             tbUnidadeVenda.Text = linha?.Cells["Unidade Venda"].Value.ToString();
-            tbDataCompra.Text = linha?.Cells["Data Compra"].Value.ToString();
-            cbGrupo.Text = linha?.Cells["Grupo"].Value.ToString();
+            tbDataCompra.Text = DateTime.TryParse(linha?.Cells["DataCompra"].Value.ToString(), out var dataC)
+                ? dataC.ToString("g") : "";
+            cbGrupo.SelectedValue = linha?.Cells["IdGrupo"].Value;
         }
         #endregion
     }
