@@ -56,6 +56,7 @@ namespace IFSPStore.App.Cadastros
                     PreencheObjeto(grupo);
                     grupo = _grupoService.Add<Grupo, Grupo, GrupoValidator>(grupo);
                 }
+                tabControl.SelectedIndex = 1;
             }
             catch(Exception ex)
             {
@@ -79,7 +80,7 @@ namespace IFSPStore.App.Cadastros
         {
             grupos = _grupoService.Get<Grupo>().ToList();
             dgvConsulta.DataSource = grupos;
-            dgvConsulta.Columns["Nome"]!.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvConsulta.Columns["Nome"]!.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
         }
 

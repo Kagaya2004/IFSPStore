@@ -62,6 +62,7 @@ namespace IFSPStore.App.Cadastros
                     PreencheObjeto(usuario);
                     _usuarioService.Add<Usuario, Usuario, UsuarioValidator>(usuario);
                 }
+                tabControl.SelectedIndex = 1;
             }
             catch(Exception ex)
             {
@@ -85,7 +86,7 @@ namespace IFSPStore.App.Cadastros
         {
             usuarios = _usuarioService.Get<Usuario>().ToList();
             dgvConsulta.DataSource = usuarios;
-            dgvConsulta.Columns["Nome"]!.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvConsulta.Columns["Nome"]!.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         protected override void CarregaRegistro(DataGridViewRow? linha)

@@ -60,6 +60,7 @@ namespace IFSPStore.App.Cadastros
                     PreencheObjeto(produto);
                     _produtoService.Add<Produto, Produto, ProdutoValidator>(produto);
                 }
+                tabControl.SelectedIndex = 1;
             }
             catch(Exception ex)
             {
@@ -83,7 +84,7 @@ namespace IFSPStore.App.Cadastros
         {
             produtos = _produtoService.Get<Produto>().ToList();
             dgvConsulta.DataSource = produtos;
-            dgvConsulta.Columns["Nome"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvConsulta.Columns["Nome"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         protected override void CarregaRegistro(DataGridViewRow? linha)

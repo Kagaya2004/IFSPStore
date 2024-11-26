@@ -57,11 +57,13 @@ namespace IFSPStore.App.Cadastros
                     PreencheObjeto(cidade);
                     _cidadeService.Add<Cidade, Cidade, CidadeValidator>(cidade);
                 }
+                tabControl.SelectedIndex = 1;
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, @"IFSP Store", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         protected override void Excluir(int id)
@@ -80,7 +82,7 @@ namespace IFSPStore.App.Cadastros
         {
             cidades = _cidadeService.Get<Cidade>().ToList();
             dgvConsulta.DataSource = cidades;
-            dgvConsulta.Columns["Nome"]!.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvConsulta.Columns["Nome"]!.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         protected override void CarregaRegistro(DataGridViewRow? linha)
