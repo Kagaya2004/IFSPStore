@@ -103,7 +103,7 @@ namespace IFSPStore.App.Cadastros
                 ? dataC.ToString("g") : "";
             tbDataLogin.Text = DateTime.TryParse(linha?.Cells["DataLogin"].Value.ToString(), out var dataL)
                 ? dataL.ToString("g") : "";
-
+        }
         #endregion
     }
 }

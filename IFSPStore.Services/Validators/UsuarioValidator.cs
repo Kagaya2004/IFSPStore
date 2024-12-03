@@ -17,12 +17,12 @@ namespace IFSPStore.Service.Validators
                 .NotNull().WithMessage("Nome do usuário obrigatório.");
             RuleFor(c => c.Senha)
                 .NotEmpty().WithMessage("Senha obrigatório.")
-                .NotNull().WithMessage("Senha obrigatório.")
-                .MinimumLength(8).WithMessage("A senha precisa possuir,no mínimo, 8 caracteres")
-                .Matches(@"[A-Z]+").WithMessage("A senha precisa possuir, pelo menos, um caractere maíusculo.")
-                .Matches(@"[a-z]+").WithMessage("A senha precisa possuir, pelo menos, um caractere minúsculo")
-                .Matches(@"[0-9]+").WithMessage("A senha precisa possuir, pelo menos, um caractere numérico")
-                .Matches(@"[\!\?\*\.\@]+").WithMessage("a senha precisa possuir, pelo menos, um caractere desses caracteres: ! ? * .");
+                .NotNull().WithMessage("Senha obrigatório.");
+                //.MinimumLength(8).WithMessage("A senha precisa possuir,no mínimo, 8 caracteres")
+                //.Matches(@"[A-Z]+").WithMessage("A senha precisa possuir, pelo menos, um caractere maíusculo.")
+                //.Matches(@"[a-z]+").WithMessage("A senha precisa possuir, pelo menos, um caractere minúsculo")
+                //.Matches(@"[0-9]+").WithMessage("A senha precisa possuir, pelo menos, um caractere numérico")
+                //.Matches(@"[\!\?\*\.\@]+").WithMessage("a senha precisa possuir, pelo menos, um caractere desses caracteres: ! ? * .");
             RuleFor(c => c.Email)
                 .NotEmpty().WithMessage("E-mail obrigatório.")
                 .NotNull().WithMessage("E-mail obrigatório.")

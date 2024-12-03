@@ -69,7 +69,7 @@ namespace IFSPStore.Repository.BaseRepository
 
         public void Update(TEntity entity)
         {
-            _mySqlcontext.Entry(entity).State = EntityState.Modified;
+            //_mySqlcontext.Entry(entity).State = EntityState.Modified;
             _mySqlcontext.SaveChanges();
         }
     }

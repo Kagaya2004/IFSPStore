@@ -51,13 +51,14 @@
             tabControl.Controls.Add(tabPageCadastro);
             tabControl.Controls.Add(tabPageConsulta);
             tabControl.Depth = 0;
+            tabControl.Dock = DockStyle.Fill;
             tabControl.ImageList = iconList;
-            tabControl.Location = new Point(6, 67);
+            tabControl.Location = new Point(3, 64);
             tabControl.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             tabControl.Multiline = true;
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(797, 377);
+            tabControl.Size = new Size(633, 355);
             tabControl.TabIndex = 0;
             // 
             // tabPageCadastro
@@ -68,7 +69,7 @@
             tabPageCadastro.Location = new Point(4, 31);
             tabPageCadastro.Name = "tabPageCadastro";
             tabPageCadastro.Padding = new Padding(3);
-            tabPageCadastro.Size = new Size(789, 342);
+            tabPageCadastro.Size = new Size(625, 320);
             tabPageCadastro.TabIndex = 0;
             tabPageCadastro.Text = "Cadastro";
             tabPageCadastro.UseVisualStyleBackColor = true;
@@ -82,7 +83,7 @@
             btnCancelar.HighEmphasis = true;
             btnCancelar.Icon = null;
             btnCancelar.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            btnCancelar.Location = new Point(580, 304);
+            btnCancelar.Location = new Point(416, 282);
             btnCancelar.Margin = new Padding(4, 6, 4, 6);
             btnCancelar.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             btnCancelar.Name = "btnCancelar";
@@ -104,7 +105,7 @@
             btnSalvar.HighEmphasis = true;
             btnSalvar.Icon = null;
             btnSalvar.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            btnSalvar.Location = new Point(694, 304);
+            btnSalvar.Location = new Point(530, 282);
             btnSalvar.Margin = new Padding(4, 6, 4, 6);
             btnSalvar.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             btnSalvar.Name = "btnSalvar";
@@ -221,7 +222,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(639, 422);
             Controls.Add(tabControl);
             DrawerTabControl = tabControl;
             Name = "CadastroBase";
