@@ -97,6 +97,10 @@ namespace IFSPStore.App.Base
                 {
                     ((MaterialMaskedTextBox)control).Clear();
                 }
+                if (control is MaterialCheckBox)
+                {
+                    ((MaterialCheckBox)control).Checked = false;
+                }
             }
         }
 

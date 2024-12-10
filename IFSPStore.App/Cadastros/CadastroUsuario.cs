@@ -99,7 +99,7 @@ namespace IFSPStore.App.Cadastros
             tbSenha.Text = linha?.Cells["Senha"].Value.ToString();
             chAtivo.Checked = (bool)(linha?.Cells["Ativo"].Value ?? false);
 
-            tbDataCadastro.Text = DateTime.TryParse(linha?.Cells["DataCasdastro"].Value.ToString(), out var dataC)
+            tbDataCadastro.Text = DateTime.TryParse(linha?.Cells["DataCadastro"].Value.ToString(), out var dataC)
                 ? dataC.ToString("g") : "";
             tbDataLogin.Text = DateTime.TryParse(linha?.Cells["DataLogin"].Value.ToString(), out var dataL)
                 ? dataL.ToString("g") : "";

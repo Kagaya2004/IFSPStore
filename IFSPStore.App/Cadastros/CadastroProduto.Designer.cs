@@ -38,6 +38,10 @@
             tabPageCadastro.SuspendLayout();
             SuspendLayout();
             // 
+            // tabControl
+            // 
+            tabControl.Size = new Size(794, 383);
+            // 
             // tabPageCadastro
             // 
             tabPageCadastro.Controls.Add(tbDataCompra);
@@ -46,12 +50,17 @@
             tabPageCadastro.Controls.Add(tbId);
             tabPageCadastro.Controls.Add(cbGrupo);
             tabPageCadastro.Controls.Add(tbPreco);
+            tabPageCadastro.Size = new Size(786, 348);
             tabPageCadastro.Controls.SetChildIndex(tbPreco, 0);
             tabPageCadastro.Controls.SetChildIndex(cbGrupo, 0);
             tabPageCadastro.Controls.SetChildIndex(tbId, 0);
             tabPageCadastro.Controls.SetChildIndex(tbNome, 0);
             tabPageCadastro.Controls.SetChildIndex(tbUnidadeVenda, 0);
             tabPageCadastro.Controls.SetChildIndex(tbDataCompra, 0);
+            // 
+            // tabPageConsulta
+            // 
+            tabPageConsulta.Size = new Size(625, 320);
             // 
             // tbPreco
             // 
@@ -69,7 +78,7 @@
             tbPreco.InsertKeyMode = InsertKeyMode.Default;
             tbPreco.LeadingIcon = null;
             tbPreco.Location = new Point(37, 98);
-            tbPreco.Mask = "9.999,99";
+            tbPreco.Mask = "";
             tbPreco.MaxLength = 32767;
             tbPreco.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             tbPreco.Name = "tbPreco";
@@ -89,7 +98,6 @@
             tbPreco.SkipLiterals = true;
             tbPreco.TabIndex = 4;
             tbPreco.TabStop = false;
-            tbPreco.Text = "______";
             tbPreco.TextAlign = HorizontalAlignment.Center;
             tbPreco.TextMaskFormat = MaskFormat.IncludePrompt;
             tbPreco.TrailingIcon = null;
@@ -228,7 +236,7 @@
             tbDataCompra.InsertKeyMode = InsertKeyMode.Default;
             tbDataCompra.LeadingIcon = null;
             tbDataCompra.Location = new Point(540, 98);
-            tbDataCompra.Mask = "99/99/99";
+            tbDataCompra.Mask = "99/99/9999";
             tbDataCompra.MaxLength = 32767;
             tbDataCompra.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             tbDataCompra.Name = "tbDataCompra";

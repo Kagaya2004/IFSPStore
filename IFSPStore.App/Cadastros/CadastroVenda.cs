@@ -86,7 +86,7 @@ namespace IFSPStore.App.Cadastros
                 var itemVenda = new VendaItem
                 {
                     Venda = venda,
-                    Produto = _produtoService.GetById<Produto>(intem.IdProduto),
+                    Produto = _produtoService.GetById<Produto>(item.IdProduto),
                     ValorUnitario = item.ValorUnitario,
                     Quantidade = item.Quantidade,
                     ValorTotal = item.ValorTotal
@@ -213,12 +213,65 @@ namespace IFSPStore.App.Cadastros
 
                 if (float.TryParse(tbValorUnitario.Text, System.Globalization.NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out var vlUnitario))
                 {
-
+                    vendaItem.ValorUnitario = vlUnitario;
                 }
+
+                if (int.TryParse(tbQuantidade.Text, out var qtd))
+                {
+                    vendaItem.Quantidade = qtd;
+                }
+
+                vendaItem.ValorTotal = vendaItem.Quantidade * vendaItem.ValorUnitario;
+
+                _vendaItens.Add(vendaItem);
+                CalculaTotalVenda();
+                CarregaGridItensVenda();
             }
         }
+
+        private bool ValidaItem()
+        {
+            return true;
+        }
+
+
+        private void tbValorUnitario_Leave(object sender, EventArgs e)
+        {
+            if (double.TryParse(tbValorUnitario.Text, out double value))
+            {
+                tbValorUnitario.Text = string.Format(CultureInfo.CurrentCulture, @"{0:C2}", value);
+            }
+            else
+            {
+                tbValorUnitario.Text = string.Empty;
+            }
+
+            CalculaTotalItem();
+        }
+
+        private void CalculaTotalItem()
+        {
+            var convVlr = float.TryParse(tbValorUnitario.Text, NumberStyles.Currency,
+                    CultureInfo.CurrentCulture.NumberFormat, out float vlUnitario);
+            var convQtd = int.TryParse(tbQuantidade.Text, out int quantidade);
+            if (convVlr && convQtd)
+            {
+                var valorTotal = quantidade * vlUnitario;
+                tbValorTotal.Text = string.Format(CultureInfo.CurrentCulture, "{0:C2}", valorTotal);
+            }
+        }
+
+        private void CalculaTotalVenda()
+        {
+            lblValorTotal.Text = $@"Valor Total: {string.Format(CultureInfo.CurrentCulture, "{0:C2}",
+                _vendaItens.Sum(x => x.ValorTotal))}";
+            lblQuantidade.Text = $@"Qtd. Produtos: {_vendaItens.Sum(x => x.Quantidade)}";
+        }
+
+        private void tbQuantidade_Leave(object sender, EventArgs e)
+        {
+            CalculaTotalItem();
+        }
         #endregion
-
-
     }
 }

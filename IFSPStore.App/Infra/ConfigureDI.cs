@@ -61,6 +61,11 @@ namespace IFSPStore.App.Infra
             #region Formulários
             Services.AddTransient<Login, Login>();
             Services.AddTransient<CadastroCidade, CadastroCidade>();
+            Services.AddTransient<CadastroCliente, CadastroCliente>();
+            Services.AddTransient<CadastroProduto, CadastroProduto>();
+            Services.AddTransient<CadastroGrupo, CadastroGrupo>();
+            Services.AddTransient<CadastroUsuario, CadastroUsuario>();
+            Services.AddTransient<CadastroVenda, CadastroVenda>();
 
             #endregion
 
@@ -69,15 +74,15 @@ namespace IFSPStore.App.Infra
             {
                 config.CreateMap<Cidade, Cidade>();
                 config.CreateMap<Grupo, Grupo>();
-                config.CreateMap<Produto, Produto>();
+                config.CreateMap<Produto, Produto>()
+                    .ForMember(c => c.Grupo, c => c.MapFrom(x => $"{x.Grupo!.Nome}"));
                 config.CreateMap<Usuario, Usuario>();
                 config.CreateMap<Cidade, CidadeModel>()
-
-                .ForMember(c => c.NomeEstado, c => c.MapFrom(x => $"{x.Nome}/{x.Estado}"));
+                    .ForMember(c => c.NomeEstado, c => c.MapFrom(x => $"{x.Nome}/{x.Estado}"));
 
                 config.CreateMap<Cliente, ClienteModel>()
-                .ForMember(c => c.Cidade, c => c.MapFrom(x => $"{x.Cidade!.Nome}/{x.Cidade!.Estado}"))
-                .ForMember(c => c.IdCidade, c => c.MapFrom(x => x.Cidade!.Id));
+                    .ForMember(c => c.Cidade, c => c.MapFrom(x => $"{x.Cidade!.Nome}/{x.Cidade!.Estado}"))
+                    .ForMember(c => c.IdCidade, c => c.MapFrom(x => x.Cidade!.Id));
 
             }).CreateMapper());
             #endregion

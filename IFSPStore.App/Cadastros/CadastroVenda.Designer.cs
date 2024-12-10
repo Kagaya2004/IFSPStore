@@ -194,6 +194,7 @@
             tbQuantidade.TextAlign = HorizontalAlignment.Left;
             tbQuantidade.TrailingIcon = null;
             tbQuantidade.UseSystemPasswordChar = false;
+            tbQuantidade.Leave += tbQuantidade_Leave;
             // 
             // tbValorUnitario
             // 
@@ -225,6 +226,7 @@
             tbValorUnitario.TextAlign = HorizontalAlignment.Left;
             tbValorUnitario.TrailingIcon = null;
             tbValorUnitario.UseSystemPasswordChar = false;
+            tbValorUnitario.Leave += tbValorUnitario_Leave;
             // 
             // cbProduto
             // 
